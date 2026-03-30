@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessica & Aron | Unsere Hochzeit</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Lato:wght@300;400&family=Satisfy&display=swap" rel="stylesheet">
+
+    <style>
+        /* Farbpalette, inspiriert von Ihrem Dekor-Bild */
+        :root {
+            --sage-deep: #7c947a;    /* Tiefes Salbeigrün */
+            --sage-soft: #a8bbaa;    /* Sanftes Salbeigrün */
+            --peach: #f5b0a3;        /* Pfirsichrose */
+            --gold: #d4af37;         /* Goldaccent */
+            --text-dark: #3d4a3b;    /* Dunkelgrün für Text */
+            --text-light: #5a5a5a;   /* Weiches Grau/Schwarz */
+            --background: #fdfaf9;   /* Sehr helles Creme-Weiß */
+            --nav-bg: rgba(253, 250, 249, 0.98);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-light);
+            line-height: 1.8;
+            scroll-behavior: smooth;
+            background-color: var(--background);
+            /* Ein sehr dezentes Leinenmuster im Hintergrund */
+            background-image: url('https://www.transparenttextures.com/patterns/linen.png');
+        }
+
+        /* Typografie */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        /* Handschrift-Stil für Highlights */
+        .script { font-family: 'Satisfy', cursive; color: var(--peach); font-size: 1.8rem; }
+        .hero-content .script { color: white; margin-bottom: -15px; display: block; font-size: 2.5rem; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: var(--nav-bg);
+            padding: 15px 0;
+            display: flex; justify-content: center; gap: 30px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(124, 148, 122, 0.1);
+        }
+        nav a {
+            text-decoration: none; color: var(--text-dark);
+            font-weight: bold; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--peach); }
+
+        /* Hero / Titelbild */
+        .hero {
+            height: 100vh;
+            /* DIESES BILD MÜSSEN SIE HOCHLADEN: hero_photo.jpg */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('pictures/background-ja.jpg') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-align: center;
+            margin-top: 0;
+        }
+        .hero-content h1 { font-size: 5rem; color: white; margin-bottom: 10px; font-weight: 300; }
+        .hero-content p { font-size: 1.8rem; font-style: italic; color: #fffefb; }
+
+        /* Sektionen */
+        section { padding: 100px 20px; text-align: center; max-width: 900px; margin: auto; }
+        .section-title { font-size: 3rem; margin-bottom: 15px; color: var(--sage-deep); }
+        .section-subtitle { margin-bottom: 50px; font-size: 1.2rem; font-style: italic; color: var(--text-light); }
+
+        /* Story Sektion mit Bild */
+        .story-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; text-align: left; }
+        .story-image {
+            /* DIESES BILD MÜSSEN SIE HOCHLADEN: laughing_photo.jpg */
+            background: url('pictures/ARONJESSY.jpeg') center/cover no-repeat;
+            height: 500px; border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .story-content h2 { font-size: 3rem; margin-bottom: 20px; color: var(--sage-deep); }
+        .story-content p { font-size: 1.1rem; margin-bottom: 20px; }
+
+        /* Grid für Details (Wo & Wann, Unterkunft) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 50px; }
+        .card {
+            background: rgba(168, 187, 170, 0.08); /* Sehr softes Salbeigrün */
+            padding: 40px; border-radius: 12px;
+            border: 1px solid rgba(168, 187, 170, 0.15);
+            transition: 0.3s;
+            text-align: left;
+        }
+        .card:hover { transform: translateY(-8px); border-color: var(--sage-soft); }
+        .card h3 { color: var(--sage-deep); margin-bottom: 15px; font-size: 1.8rem; }
+        .card p { margin-bottom: 10px; }
+        .details-icon { color: var(--gold); font-size: 2.5rem; margin-bottom: 20px; }
+
+        /* Dresscode & Geschenke (Textlastige Sektionen) */
+        .text-section { max-width: 700px; margin: auto; margin-bottom: 80px; text-align: center; }
+        .text-section h3 { font-size: 2.2rem; margin-bottom: 15px; color: var(--sage-deep); }
+        .text-section p { font-style: italic; color: var(--text-light); margin-bottom: 10px;}
+
+        /* Parken Sektion */
+        .parking-map {
+            /* DIESES BILD MÜSSEN SIE HOCHLADEN: parking_map.png */
+            width: 100%; max-width: 700px;
+            margin: 30px auto; display: block;
+            border-radius: 12px; border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* RSVP Formular Sektion */
+        #rsvp { background: rgba(124, 148, 122, 0.05); border-radius: 12px; padding: 100px 40px; }
+        .rsvp-form { max-width: 500px; margin: auto; text-align: left; margin-top: 50px;}
+        .rsvp-form label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text-dark); }
+        .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+            width: 100%; padding: 15px; margin-bottom: 25px;
+            border: 1px solid rgba(168, 187, 170, 0.3);
+            border-radius: 8px; font-family: 'Lato', sans-serif;
+            background: #fff;
+        }
+        .rsvp-form textarea { height: 100px; resize: vertical; }
+
+        /* Bring-Liste Sektion */
+        .bring-list { margin-top: 30px; margin-bottom: 30px; border-top: 1px solid #ddd; padding-top: 20px; }
+        .bring-list label { font-weight: normal; }
+        .checkbox-group { display: flex; align-items: center; margin-bottom: 10px; }
+        .checkbox-group input { width: auto; margin-right: 10px; margin-bottom: 0; }
+
+        /* Buttons */
+        .btn {
+            background: var(--sage-deep); color: white;
+            padding: 18px 50px; text-decoration: none;
+            border-radius: 50px; display: inline-block;
+            font-size: 1.2rem; text-transform: uppercase;
+            font-weight: bold; letter-spacing: 1px;
+            transition: background 0.3s; border: none; cursor: pointer;
+            width: 100%; text-align: center;
+        }
+        .btn:hover { background: var(--text-dark); }
+
+        /* Footer */
+        footer {
+            padding: 80px 20px;
+            background: var(--background);
+            font-size: 0.9rem; text-align: center;
+            color: var(--text-light); border-top: 1px solid rgba(124, 148, 122, 0.1);
+        }
+
+        /* Mobile Optimierung */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content .script { font-size: 1.8rem; }
+            section { padding: 80px 20px; }
+            .story-container { grid-template-columns: 1fr; text-align: center; }
+            .story-image { height: 350px; }
+            nav { gap: 15px; padding: 10px 0; }
+            nav a { font-size: 0.8rem; letter-spacing: 1px; }
+            .card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#hero">Start</a>
+    <a href="#story">Wir</a>
+    <a href="#details">Details</a>
+    <a href="#untermalt">Dresscode</a>
+    <a href="#rsvp">Anmeldung</a>
+</nav>
+
+<div class="hero" id="hero">
+    <div class="hero-content">
+        <span class="script">Wir sagen JA</span>
+        <h1>Jessica & Aron</h1>
+        <p>03.07.2026</p>
+    </div>
+</div>
+
+<section id="story">
+    <div class="story-container">
+        <div class="story-image"></div>
+        <div class="story-content">
+            <h2>Jessy & Aron</h2>
+            <p>Wir danken euch schon jetzt von Herzen, dass ihr diesen besonderen Tag mit uns verbringt. Es bedeutet uns unglaublich viel, euch an unserer Seite zu wissen.</p>
+            <p>Gemeinsam möchten wir lachen, tanzen, genießen und Erinnerungen schaffen, die uns noch lange begleiten werden. Wir freuen uns riesig auf eine unvergessliche Feier mit euch!</p>
+        </div>
+    </div>
+</section>
+
+<section id="details">
+    <div class="text-section">
+        <h3 class="script">Liebe Gäste,</h3>
+        <p>gerne laden wir Euch herzlich zu unserer Hochzeitsparty am Abend ein und freuen uns, diesen besonderen Tag gemeinsam mit Euch zu feiern.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="details-icon">♥</div>
+            <h3>Wo & Wann?</h3>
+            <p><strong>Wir heiraten am 03.07.2026 in Neresheim.</strong></p>
+            <p>Der Sektempfang ist um 18:00 Uhr in der Dischinger Straße 10, 73450 Neresheim.</p>
+        </div>
+        <div class="card">
+            <div class="details-icon">✦</div>
+            <h3>Parken</h3>
+            <p>An der Location selbst, oben in gelb gekennzeichnet, gibt es rund 30 Parkplätze.</p>
+            <p>Ca. 2 min. zu Fuß entfernt, oben in rot gekennzeichnet, stehen weitere Parkplätze zur Verfügung.</p>
+            <img src="parking_map.png" alt="Parkmöglichkeiten Karte" class="parking-map">
+        </div>
+    </div>
+</section>
+
+<section id="untermalt" style="background-color: #fdfaf9;">
+    <div class="text-section">
+        <h3>Dresscode</h3>
+        <p>Sommerlich elegant.</p>
+        <p>Ob Anzug, Kleid oder schicke Sommergarderobe – fühlt Euch festlich gekleidet und passend zu einer milden Sommernacht in unserer Gärtnerei.</p>
+    </div>
+
+    <div class="text-section">
+        <h3>Geschenkwünsche</h3>
+        <p>Euer Kommen ist für uns das größte Geschenk.</p>
+        <p>Wenn Ihr uns darüber hinaus etwas mitgeben möchtet, schätzen wir einen finanziellen Beitrag für unsere gemeinsame Zukunft sehr.</p>
+    </div>
+</section>
+
+<section id="unterkunft">
+    <div class="grid">
+        <div class="card">
+            <div class="details-icon">&nbsp;</div> <h3>Unterkunft buchen</h3>
+            <p>Damit wir gemeinsam lange und ausgelassen feiern können, empfehlen wir euch folgende Hotels in unmittelbarer Nähe zur Location. Die Buchung erfolgt eigenständig – wir raten zu einer frühzeitigen Reservierung. Alternativ findet ihr über Airbnb weitere Unterkünfte in der Umgebung.</p>
+            <br>
+            <p><strong>Hotel Krone</strong>, Neresheim, 07326 963900</p>
+            <p><strong>Gästehaus Ambiente</strong>, Neresheim, 07326 6286</p>
+        </div>
+    </div>
+</section>
+
+<section id="rsvp">
+    <h2 class="section-title">Anmeldung zur Hochzeit</h2>
+    <p class="section-subtitle">Damit wir besser planen können, bitten wir euch, uns bis zum **03.05.2026** über das Formular Bescheid zu geben, ob ihr dabei seid.</p>
+    <p>Wenn ihr uns beim offenen Buffet unterstützen möchtet, könnt ihr euch dort ebenfalls in unsere Bring-Liste eintragen.</p>
+
+    <form class="rsvp-form" action="https://formspree.io/f/IHR_FORMSPREE_ID" method="POST">
+        <label for="name">Vollständiger Name</label>
+        <input type="text" id="name" name="name" required placeholder="Vor- und Nachname">
+
+        <label for="status">Wirst du kommen?</label>
+        <select id="status" name="status" required>
+            <option value="" disabled selected>Bitte auswählen...</option>
+            <option value="ja">Ja, ich bin dabei!</option>
+            <option value="nein">Nein, ich kann leider nicht.</option>
+        </select>
+
+        <div class="bring-list">
+            <h4>Bring-Liste (Optional)</h4>
+            <p>Möchtet ihr unser offenes Buffet mit einem Beitrag unterstützen?</p>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="bring1" name="bring[]" value="salat">
+                <label for="bring1">Leichter Salat</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="bring2" name="bring[]" value="kuchen">
+                <label for="bring2">Kuchen / Süßspeise</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="bring3" name="bring[]" value="fingerfood">
+                <label for="bring3">Fingerfood</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="bring4" name="bring[]" value="nichts">
+                <label for="bring4">Wir bringen nichts mit</label>
+            </div>
+        </div>
+
+        <label for="message">Nachricht an das Brautpaar (z.B. Allergien)</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit" class="btn">Anmeldung Senden</button>
+    </form>
+</section>
+
+<footer>
+    <p class="script" style="color:var(--text-dark); font-size: 1.8rem; margin-bottom: 20px;">Jessica & Aron</p>
+    <p>03.07.2026</p>
+    <p>Wir freuen uns auf Euch!</p>
+</footer>
+
+</body>
+</html>
