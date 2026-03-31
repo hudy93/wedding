@@ -252,7 +252,10 @@
     <p class="section-subtitle">Damit wir besser planen können, bitten wir euch, uns bis zum **03.05.2026** über das Formular Bescheid zu geben, ob ihr dabei seid.</p>
     <p>Wenn ihr uns beim offenen Buffet unterstützen möchtet, könnt ihr euch dort ebenfalls in unsere Bring-Liste eintragen.</p>
 
-    <form class="rsvp-form" action="https://formspree.io/f/IHR_FORMSPREE_ID" method="POST">
+    <form class="rsvp-form" action="https://api.web3forms.com/submit" method="POST">
+
+        <input type="hidden" name="access_key" value="99f04153-05be-46f3-9857-a400284ac427">
+
         <label for="name">Vollständiger Name</label>
         <input type="text" id="name" name="name" required placeholder="Vor- und Nachname">
 
@@ -265,28 +268,20 @@
 
         <div class="bring-list">
             <h4>Bring-Liste (Optional)</h4>
-            <p>Möchtet ihr unser offenes Buffet mit einem Beitrag unterstützen?</p>
-
             <div class="checkbox-group">
-                <input type="checkbox" id="bring1" name="bring[]" value="salat">
+                <input type="checkbox" id="bring1" name="Bringt_mit[]" value="salat">
                 <label for="bring1">Leichter Salat</label>
             </div>
             <div class="checkbox-group">
-                <input type="checkbox" id="bring2" name="bring[]" value="kuchen">
+                <input type="checkbox" id="bring2" name="Bringt_mit[]" value="kuchen">
                 <label for="bring2">Kuchen / Süßspeise</label>
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="bring3" name="bring[]" value="fingerfood">
-                <label for="bring3">Fingerfood</label>
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="bring4" name="bring[]" value="nichts">
-                <label for="bring4">Wir bringen nichts mit</label>
             </div>
         </div>
 
-        <label for="message">Nachricht an das Brautpaar (z.B. Allergien)</label>
+        <label for="message">Nachricht an das Brautpaar</label>
         <textarea id="message" name="message"></textarea>
+
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
         <button type="submit" class="btn">Anmeldung Senden</button>
     </form>
