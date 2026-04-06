@@ -23,6 +23,10 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        html {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Lato', sans-serif;
             color: var(--text-light);
@@ -31,6 +35,7 @@
             background-color: var(--background);
             background-image: url('https://www.transparenttextures.com/patterns/linen.png');
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* EUKALYPTUS HINTERGRUND EFFEKT */
@@ -72,6 +77,18 @@
             border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
             opacity: 0.7;
             animation: floatUp 20s linear infinite;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .balloon.pop {
+            animation: popBurst 0.3s ease-out forwards !important;
+        }
+
+        @keyframes popBurst {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.8); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
         }
 
         .balloon::after { /* Schnur */
@@ -175,7 +192,7 @@
             top: 0;
             transform: scaleX(-1);
         }
-        @media (max-width: 768px) { .hero-content h1 { font-size: 3rem; } .story-container { grid-template-columns: 1fr; text-align: center; } .story-image { order: 2; } .story-content { order: 1; } .flower-decor img { height: 180px; opacity: 0.3; } .flower-decor.left img { left: -20px; } .flower-decor.right img { right: -20px; } .flower-decor.right { margin-top: -150px; } .flower-decor { margin-bottom: -100px; } .eucalyptus-decor img { height: 150px; opacity: 0.3; } .eucalyptus-decor.right img { right: -20px; } .eucalyptus-decor.left img { left: -20px; } .wave-divider { display: block; margin: -12px 0; } }
+        @media (max-width: 768px) { .hero-content h1 { font-size: 3rem; } .story-container { grid-template-columns: 1fr; text-align: center; } .story-image { order: 2; } .story-content { order: 1; } .flower-decor img { height: 180px; opacity: 0.3; } .flower-decor.left img { left: -20px; } .flower-decor.right img { right: -20px; } .flower-decor.right { margin-top: -150px; } .flower-decor { margin-bottom: -100px; } .eucalyptus-decor img { height: 150px; opacity: 0.3; } .eucalyptus-decor.right img { right: -20px; } .eucalyptus-decor.left img { left: -20px; } .wave-divider { display: block; margin: -12px 0; } nav { gap: 10px; padding: 12px 10px; flex-wrap: wrap; } nav a { font-size: 0.7rem; letter-spacing: 1px; } }
     </style>
 </head>
 <body>
@@ -315,6 +332,15 @@
     <p class="script" style="color:var(--text-dark); font-size: 1.8rem; margin-bottom: 10px;">Jessica & Aron</p>
     <p>03.07.2026</p>
 </footer>
+
+<script>
+document.querySelectorAll('.balloon').forEach(b => {
+    b.addEventListener('click', () => {
+        b.classList.add('pop');
+        b.addEventListener('animationend', () => b.remove());
+    });
+});
+</script>
 
 </body>
 </html>
