@@ -125,9 +125,14 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 50px; }
         .card { background: rgba(255, 255, 255, 0.7); padding: 40px; border-radius: 12px; border: 1px solid rgba(168, 187, 170, 0.15); backdrop-filter: blur(5px); }
         .parking-map { width: 100%; max-width: 700px; margin: 30px auto; display: block; border-radius: 12px; }
+        .parking-mobile { display: none; }
+        .parking-desktop { display: block; }
         #rsvp { background: rgba(124, 148, 122, 0.05); border-radius: 12px; padding: 100px 40px; }
         .rsvp-form { max-width: 500px; margin: auto; text-align: left; }
         .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 15px; margin-bottom: 25px; border: 1px solid rgba(168, 187, 170, 0.3); border-radius: 8px; }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-bottom: 0; }
+        .checkbox-group label { margin-bottom: 0; }
         .btn { background: var(--sage-deep); color: white; padding: 18px 50px; border-radius: 50px; display: inline-block; font-size: 1.2rem; text-transform: uppercase; font-weight: bold; border: none; cursor: pointer; width: 100%; }
         footer { padding: 80px 20px; text-align: center; border-top: 1px solid rgba(124, 148, 122, 0.1); }
         .wave-divider {
@@ -192,7 +197,7 @@
             top: 0;
             transform: scaleX(-1);
         }
-        @media (max-width: 768px) { .hero-content h1 { font-size: 3rem; } .story-container { grid-template-columns: 1fr; text-align: center; } .story-image { order: 2; } .story-content { order: 1; } .flower-decor img { height: 180px; opacity: 0.3; } .flower-decor.left img { left: -20px; } .flower-decor.right img { right: -20px; } .flower-decor.right { margin-top: -150px; } .flower-decor { margin-bottom: -100px; } .eucalyptus-decor img { height: 150px; opacity: 0.3; } .eucalyptus-decor.right img { right: -20px; } .eucalyptus-decor.left img { left: -20px; } .wave-divider { display: block; margin: -12px 0; } nav { gap: 10px; padding: 12px 10px; flex-wrap: wrap; } nav a { font-size: 0.7rem; letter-spacing: 1px; } }
+        @media (max-width: 768px) { .hero-content h1 { font-size: 3rem; } .story-container { grid-template-columns: 1fr; text-align: center; } .story-image { order: 2; } .story-content { order: 1; } .flower-decor img { height: 180px; opacity: 0.3; } .flower-decor.left img { left: -20px; } .flower-decor.right img { right: -20px; } .flower-decor.right { margin-top: -150px; } .flower-decor { margin-bottom: -100px; } .eucalyptus-decor img { height: 150px; opacity: 0.3; } .eucalyptus-decor.right img { right: -20px; } .eucalyptus-decor.left img { left: -20px; } .wave-divider { display: block; margin: -12px 0; } nav { gap: 10px; padding: 12px 10px; flex-wrap: wrap; } nav a { font-size: 0.7rem; letter-spacing: 1px; } .parking-mobile { display: block; } .parking-desktop { display: none; } }
     </style>
 </head>
 <body>
@@ -258,9 +263,10 @@
             <div class="details-icon">✦</div>
             <h3>Parken</h3>
             <p>An der Location (gelb) und 2 Min. entfernt (rot) gibt es Parkplätze.</p>
-            <img src="pictures/parking.png" alt="Parken" class="parking-map">
+            <img src="pictures/parking.png" alt="Parken" class="parking-map parking-mobile">
         </div>
     </div>
+    <img src="pictures/parking.png" alt="Parken" class="parking-map parking-desktop">
 </section>
 
 <div class="wave-divider">
@@ -309,15 +315,29 @@
             <option value="nein">Nein, ich kann leider nicht.</option>
         </select>
 
+        <label for="guests">Anzahl Personen (inkl. dir)</label>
+        <select id="guests" name="guests" required>
+            <option value="" disabled selected>Bitte auswählen...</option>
+            <option value="1">1 Person</option>
+            <option value="2">2 Personen</option>
+            <option value="3">3 Personen</option>
+            <option value="4">4 Personen</option>
+            <option value="5">5 Personen</option>
+        </select>
+
         <div class="bring-list">
             <h4>Bring-Liste (Optional)</h4>
             <div class="checkbox-group">
                 <input type="checkbox" id="bring1" name="Bringt_mit[]" value="salat">
-                <label for="bring1">Leichter Salat</label>
+                <label for="bring1">Salat</label>
             </div>
             <div class="checkbox-group">
                 <input type="checkbox" id="bring2" name="Bringt_mit[]" value="kuchen">
                 <label for="bring2">Kuchen / Süßspeise</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="bring2" name="Bringt_mit[]" value="fingerfood">
+                <label for="bring2">Fingerfood</label>
             </div>
         </div>
 
